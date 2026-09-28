@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phishing Detector — CYBERCORE</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/simulations.css" />
+</head>
+<body>
+  <header class="navbar navbar--scrolled">
+    <div class="navbar__inner">
+      <a href="../index.html" class="brand">
+        <span class="brand__logo">[C]</span>
+        <span class="brand__text">CYBER<span>CORE</span></span>
+      </a>
+      <nav class="nav" id="navMenu">
+        <a href="../dashboard.php" class="nav__link">Dashboard</a>
+        <a href="../index.html" class="nav__link">Home</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="sim">
+    <div class="sim__head">
+      <p class="sim__code">[ MOD-01 · PHISHING ]</p>
+      <h1 class="sim__title">Phishing Detector</h1>
+      <p class="sim__lead">
+        Read each email carefully. Decide if it's <strong class="text-lime">LEGIT</strong>
+        or a <strong class="text-magenta">PHISHING</strong> attempt.
+      </p>
+    </div>
+
+    <div class="sim__hud">
+      <div class="hud__item">
+        <span class="hud__label">Score</span>
+        <span class="hud__value" id="score">0</span>
+      </div>
+      <div class="hud__item">
+        <span class="hud__label">Progress</span>
+        <span class="hud__value" id="progress">1 / 8</span>
+      </div>
+      <div class="hud__item">
+        <span class="hud__label">Streak</span>
+        <span class="hud__value" id="streak">0</span>
+      </div>
+    </div>
+
+    <div class="panel" id="scenarioCard">
+      <!-- Filled by phishing.js -->
+    </div>
+
+    <div id="resultPanel" hidden></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand">CYBER<span>CORE</span></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/phishing.js"></script>
+</body>
+</html>

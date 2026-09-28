@@ -1,0 +1,68 @@
+<!-- ============== simulations/xss.html ============== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XSS Playground — CYBERCORE</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/simulations.css" />
+</head>
+<body>
+  <header class="navbar navbar--scrolled">
+    <div class="navbar__inner">
+      <a href="../index.html" class="brand">
+        <span class="brand__logo">[C]</span>
+        <span class="brand__text">CYBER<span>CORE</span></span>
+      </a>
+      <nav class="nav" id="navMenu">
+        <a href="../dashboard.php" class="nav__link">Dashboard</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="sim">
+    <div class="sim__head">
+      <p class="sim__code">[ MOD-04 · XSS ]</p>
+      <h1 class="sim__title">XSS Playground</h1>
+      <p class="sim__lead">
+        Post a comment. Flip the sanitization switch to see how Cross-Site
+        Scripting executes — and how escaping neutralises it.
+      </p>
+    </div>
+
+    <div class="panel">
+      <div class="switch-row">
+        <label class="switch">
+          <input type="checkbox" id="sanitizeToggle" checked />
+          <span class="switch__slider"></span>
+        </label>
+        <span class="switch-label">
+          Sanitization:
+          <strong id="sanitizeLabel" class="text-lime">ON</strong>
+        </span>
+      </div>
+
+      <form class="form" id="commentForm">
+        <div class="field">
+          <label for="comment">Post a comment</label>
+          <textarea class="textarea" id="comment"
+                    placeholder="Try: &lt;img src=x onerror=alert('XSS')&gt;"></textarea>
+        </div>
+        <button class="btn btn--solid" type="submit">Post Comment</button>
+      </form>
+    </div>
+
+    <div class="panel" style="margin-top:22px;">
+      <h3>Comment Feed</h3>
+      <ul class="feed" id="feed"></ul>
+    </div>
+  </section>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/xss.js"></script>
+</body>
+</html>
