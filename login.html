@@ -1,0 +1,60 @@
+<!-- ============== login.html ============== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — CYBERCORE</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar navbar--scrolled">
+    <div class="navbar__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__logo">[C]</span>
+        <span class="brand__text">CYBER<span>CORE</span></span>
+      </a>
+      <nav class="nav" id="navMenu">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="register.html" class="nav__link nav__link--cta">Register</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="auth">
+    <div class="auth__box panel">
+      <div class="auth__head">
+        <h1>Access Terminal</h1>
+        <p>Authenticate to enter the lab</p>
+      </div>
+
+      <form class="form" id="loginForm" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input class="input" type="text" id="username" name="username"
+                 required autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input class="input" type="password" id="password" name="password"
+                 required autocomplete="current-password" />
+        </div>
+
+        <div class="msg msg--error" id="formMsg" hidden></div>
+
+        <button type="submit" class="btn btn--solid btn--block">Log In</button>
+      </form>
+
+      <p class="auth__foot">
+        No account? <a href="register.html">Register →</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

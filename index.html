@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CYBERCORE — Attack & Defense Simulation Lab</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ================= LIVE SYSTEM TICKER ================= -->
+  <div class="live-ticker">
+    <div class="live-ticker__track">
+      <span>NODE <strong>ALPHA-04</strong> online</span>
+      <span>Firewall <strong>ACTIVE</strong> · 0 threats</span>
+      <span>Port scan <span class="warn">detected</span> · 192.168.1.44</span>
+      <span>Encryption <strong>AES-256</strong></span>
+      <span>Intrusion <span class="crit">BLOCKED</span> · sqlmap</span>
+      <span>Session <strong>SECURE</strong></span>
+      <span>Heartbeat <strong>OK</strong> · 12ms</span>
+      <span>NODE <strong>BRAVO-07</strong> online</span>
+      <span>Payload <span class="warn">QUARANTINED</span></span>
+      <span>Logs streaming <strong>·</strong> live</span>
+      <!-- duplicate for seamless loop -->
+      <span>NODE <strong>ALPHA-04</strong> online</span>
+      <span>Firewall <strong>ACTIVE</strong> · 0 threats</span>
+      <span>Port scan <span class="warn">detected</span> · 192.168.1.44</span>
+      <span>Encryption <strong>AES-256</strong></span>
+      <span>Intrusion <span class="crit">BLOCKED</span> · sqlmap</span>
+      <span>Session <strong>SECURE</strong></span>
+      <span>Heartbeat <strong>OK</strong> · 12ms</span>
+      <span>NODE <strong>BRAVO-07</strong> online</span>
+      <span>Payload <span class="warn">QUARANTINED</span></span>
+      <span>Logs streaming <strong>·</strong> live</span>
+    </div>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__logo">[C]</span>
+        <span class="brand__text">CYBER<span>CORE</span></span>
+      </a>
+      <nav class="nav" id="navMenu">
+        <a href="index.html" class="nav__link is-active">Home</a>
+        <a href="#modules"   class="nav__link">Modules</a>
+        <a href="#leaderboard" class="nav__link">Leaderboard</a>
+        <a href="login.html" class="nav__link nav__link--cta">Login</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> SYSTEM ONLINE // v1.0</p>
+        <h1 class="hero__title">
+          Train under <span class="accent">cyber attack.</span><br />
+          Learn to <span class="accent2">defend.</span>
+        </h1>
+        <p class="hero__lead">
+          CYBERCORE is a hands-on simulation lab for students. Launch phishing
+          attacks, crack passwords, inject SQL, and deploy XSS payloads — all in
+          a safe sandbox, then learn how to block them.
+        </p>
+        <div class="hero__cta">
+          <a href="register.html" class="btn btn--solid">▶ Start Training</a>
+          <a href="#modules"       class="btn btn--ghost">▤ View Modules</a>
+        </div>
+        <ul class="hero__stats">
+          <li><strong>04</strong><span>Simulations</span></li>
+          <li><strong>100%</strong><span>Safe Sandbox</span></li>
+          <li><strong>+XP</strong><span>Leaderboard</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="terminal">
+          <div class="terminal__bar">
+            <span class="dot dot--red"></span>
+            <span class="dot dot--amber"></span>
+            <span class="dot dot--lime"></span>
+            <span class="terminal__title">live@cybercore:~$ tail -f threats.log</span>
+          </div>
+          <pre class="terminal__body" id="liveLog"><span class="line line--dim">[--:--:--] boot · monitoring interfaces...</span>
+<span class="line line--ok">[--:--:--] firewall: ACTIVE (rules: 214)</span>
+<span class="line line--ok">[--:--:--] ids: signature db loaded</span>
+<span class="line line--warn">[--:--:--] port scan detected · 192.168.1.44</span>
+<span class="line line--error">[--:--:--] intrusion attempt · SQLi payload</span>
+<span class="line line--ok">[--:--:--] blocked & logged</span>
+<span class="line line--dim">[--:--:--] user student-2841 authenticated</span>
+<span class="line line--ok">[--:--:--] handshake complete · AES-256</span>
+<span class="caret"></span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ================= LIVE THREAT ANALYTICS ================= -->
+  <section class="section" id="threats">
+    <div class="section__head">
+      <p class="section__code">[ LIVE TELEMETRY ]</p>
+      <h2 class="section__title">Attack Analytics</h2>
+      <p class="section__lead">
+        Real-time attack telemetry streaming from the perimeter. Samples
+        collected every second.
+      </p>
+    </div>
+
+    <!-- KPI row -->
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="kpi__label">Attacks / sec</span>
+        <span class="kpi__value" id="kpiAps">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi__label">Blocked today</span>
+        <span class="kpi__value" id="kpiBlocked">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi__label">Active threats</span>
+        <span class="kpi__value kpi__value--warn" id="kpiActive">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi__label">Unique source IPs</span>
+        <span class="kpi__value" id="kpiIps">0</span>
+      </div>
+    </div>
+
+    <!-- Live line chart -->
+    <div class="chart-panel panel">
+      <div class="chart-panel__head">
+        <h3 class="chart-panel__title">Attack traffic · last 60s</h3>
+        <div class="chart-panel__legend">
+          <span class="legend legend--in">Incoming</span>
+          <span class="legend legend--blocked">Blocked</span>
+        </div>
+      </div>
+      <canvas id="trafficChart" class="chart-canvas"></canvas>
+    </div>
+
+    <!-- Attack vector bars -->
+    <div class="chart-panel panel">
+      <div class="chart-panel__head">
+        <h3 class="chart-panel__title">Attack vectors</h3>
+        <span class="chart-panel__sub">Live distribution</span>
+      </div>
+      <ul class="bar-chart" id="attackTypes"></ul>
+    </div>
+  </section>
+
+  <!-- ================= MODULES ================= -->
+  <section class="section" id="modules">
+    <div class="section__head">
+      <p class="section__code">[ SYS-MAP ]</p>
+      <h2 class="section__title">Simulation Modules</h2>
+      <p class="section__lead">
+        Each module is a self-contained challenge. Earn points, climb the
+        leaderboard, and learn real attack & defense techniques.
+      </p>
+    </div>
+
+    <div class="grid grid--2">
+      <article class="card">
+        <span class="card__code">MOD-01 // easy</span>
+        <h3 class="card__title">Phishing Detector</h3>
+        <p class="card__desc">
+          Eight realistic emails. Decide what's legit and what's a trap. Learn
+          to spot spoofed URLs, urgent language, and mismatched senders.
+        </p>
+        <a href="simulations/phishing.html" class="btn btn--sm">Launch →</a>
+      </article>
+
+      <article class="card">
+        <span class="card__code">MOD-02 // easy</span>
+        <h3 class="card__title">Password Strength Lab</h3>
+        <p class="card__desc">
+          Type a password and watch a live entropy analysis, brute-force
+          crack-time estimate, and rule-by-rule breakdown.
+        </p>
+        <a href="simulations/password.html" class="btn btn--sm">Launch →</a>
+      </article>
+
+      <article class="card">
+        <span class="card__code">MOD-03 // medium</span>
+        <h3 class="card__title">SQL Injection Range</h3>
+        <p class="card__desc">
+          Attack a deliberately vulnerable login form, watch the query break,
+          then compare it against a parameterized, safe version.
+        </p>
+        <a href="simulations/sql-injection.html" class="btn btn--sm">Launch →</a>
+      </article>
+
+      <article class="card">
+        <span class="card__code">MOD-04 // medium</span>
+        <h3 class="card__title">XSS Playground</h3>
+        <p class="card__desc">
+          Post a comment. Toggle sanitization on and off to see exactly how
+          Cross-Site Scripting executes — and how to stop it.
+        </p>
+        <a href="simulations/xss.html" class="btn btn--sm">Launch →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= LEADERBOARD ================= -->
+  <section class="section" id="leaderboard">
+    <div class="section__head">
+      <p class="section__code">[ TOP-10 ]</p>
+      <h2 class="section__title">Leaderboard</h2>
+      <p class="section__lead">Global ranking across all simulation modules.</p>
+    </div>
+
+    <div class="panel">
+      <table class="table" id="lbTable">
+        <thead>
+          <tr><th>#</th><th>Operator</th><th>Score</th><th>%</th><th>Sims</th></tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5" class="table__empty">Loading leaderboard…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__brand">CYBER<span>CORE</span> // student defense lab</p>
+      <p class="footer__meta">Built with HTML · CSS · JS · PHP · MySQL</p>
+      <p class="footer__copy">© <span id="year"></span> CYBERCORE. Educational use only.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/live-chart.js"></script>
+</body>
+</html>

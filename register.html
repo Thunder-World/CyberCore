@@ -1,0 +1,70 @@
+<!-- ============== register.html ============== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — CYBERCORE</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar navbar--scrolled">
+    <div class="navbar__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__logo">[C]</span>
+        <span class="brand__text">CYBER<span>CORE</span></span>
+      </a>
+      <nav class="nav" id="navMenu">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="login.html" class="nav__link nav__link--cta">Login</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="auth">
+    <div class="auth__box panel">
+      <div class="auth__head">
+        <h1>Register</h1>
+        <p>Create your operator account</p>
+      </div>
+
+      <form class="form" id="registerForm" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input class="input" type="text" id="username" name="username"
+                 required minlength="3" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input class="input" type="email" id="email" name="email"
+                 required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="password">Password (min 8 chars)</label>
+          <input class="input" type="password" id="password" name="password"
+                 required minlength="8" autocomplete="new-password" />
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm Password</label>
+          <input class="input" type="password" id="confirm" name="confirm"
+                 required autocomplete="new-password" />
+        </div>
+
+        <div class="msg msg--error" id="formMsg" hidden></div>
+
+        <button type="submit" class="btn btn--solid btn--block">Create Account</button>
+      </form>
+
+      <p class="auth__foot">
+        Already registered? <a href="login.html">Log in →</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
